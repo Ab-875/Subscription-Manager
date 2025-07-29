@@ -8,5 +8,11 @@
 <body>
     <%- include('../partials/navbar') %>
     <h1>All Subscriptions</h1>
+
+    <% foundSubscription.forEach((oneSubscription) => { %>
+        <div>
+            <h2><%= oneSubscription.subName %></h2>
+        </div>
+    <% }); %>
 </body>
 </html>

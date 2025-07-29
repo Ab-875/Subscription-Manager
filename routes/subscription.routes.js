@@ -1,17 +1,19 @@
 const router = require("express").Router()
 const Subscription = require("../models/Subscription")
+const User = require("../models/User")
 
 
-router.get("/", (req, res) => {
+router.get("/", async (req, res) => {
     try {
-        res.render("subscriptionS/all-subscriptions")
+        const foundSubscription = await Subscription.find()
+        res.render("subscriptionS/all-subscriptions", {foundSubscription})
     }
     catch (error) {
         console.log(error)
     }
 })
 
-router.get("/new", (req,res) => {
+router.get("/new", async (req,res) => {
     try{
         res.render("subscriptions/new-subscription")
     }
