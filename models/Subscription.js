@@ -11,7 +11,7 @@ const subscriptionSchema = new mongoose.Schema({
     },
     price: {
         type: Number,
-        requried: true
+        required: true
     },
     startDate: {
         type: Date,
