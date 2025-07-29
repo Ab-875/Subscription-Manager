@@ -63,7 +63,8 @@ router.get("/:id/edit", async (req,res) => {
 
 router.put("/:id", async (req,res) => {
     try{
-
+        await Subscription.findByIdAndUpdate(req.params.id, req.body)
+        res.redirect(`/subcriptions/${req.params.id}`)
     }
     catch(error){
         console.log(error)

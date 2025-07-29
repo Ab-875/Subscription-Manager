@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="/subscriptions" method="post">
+    <form action="/subscriptions/<%= foundSubscription._id %>?_method=PUT" method="post">
 
         <label for="name">Subscription Name:</label>
         <input type="text" name="subName" id="name" value="<%= foundSubscription.subName %>">
