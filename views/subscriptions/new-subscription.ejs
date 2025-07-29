@@ -7,5 +7,26 @@
 </head>
 <body>
     <h1>Add Subscription</h1>
+
+    <form action="/subscriptions" method="post">
+
+        <label for="name">Subscription Name:</label>
+        <input type="text" name="subName" id="name">
+
+        <label for="Category">Category: </label>
+        <input type="text" name="subCategory" id="Category">
+
+        <label for="price">Charge:</label>
+        <input type="number" name="price" id="price">
+        
+        <label for="start-date">Start</label>
+        <input type="date" name="startDate" id="start-date">
+        
+        <label for="end-date">Start</label>
+        <input type="date" name="endDate" id="end-date">
+
+        <button type="submit">Add Subscription</button>
+    </form>
+
 </body>
 </html>

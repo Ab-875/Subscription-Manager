@@ -22,8 +22,8 @@ router.get("/new", (req,res) => {
 
 router.post("/", async (req,res) => {
     try{
-        const newSubscription = await mongoose.create(req.body)
-        res.redirect("subscriptions")
+        const newSubscription = await mongoose.create(req.body, req.body.user = req.session.id)
+        res.redirect("/subscriptions")
     }
     catch(error){
         console.log(error)
