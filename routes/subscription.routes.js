@@ -51,5 +51,15 @@ router.get("/:id", async (req,res) => {
     }
 })
 
+router.get("/:id/edit", async (req,res) => {
+    try{
+        const foundSubscription = await Subscription.findById(req.params.id)
+        res.render("subscriptions/edit-subscription.ejs")
+    }
+    catch(error){
+        console.log(error)
+    }
+})
+
 
 module.exports = router
