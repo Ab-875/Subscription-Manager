@@ -24,7 +24,16 @@ router.get("/new", async (req,res) => {
 
 router.post("/", async (req,res) => {
     try{
-        const newSubscription = await Subscription.create(req.body)
+        const newSubscription = new Subscription({
+            subName: req.body.subName,
+            subCategory: req.body.subCategory,
+            price: req.body.price,
+            startDate: req.body.startDate,
+            endDate: req.body.endDate,
+            user: req.session.user._id
+        })
+
+        await newSubscription.save()
         res.redirect("/subscriptions")
     }
     catch(error){
