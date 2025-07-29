@@ -38,7 +38,7 @@ router.get("/:id", async (req,res) => {
         res.render("subscriptions/subscription-details.ejs", {foundSubscription})
     }
     catch(error){
-
+        console.log(error)
     }
 })
 
