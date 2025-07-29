@@ -32,9 +32,10 @@ router.post("/", async (req,res) => {
     }
 })
 
-router.get("/:id", (req,res) => {
+router.get("/:id", async (req,res) => {
     try{
-        res.render("subscriptions/subscription-details.ejs")
+        const foundSubscription = await Subscription.findById(req.params.id)
+        res.render("subscriptions/subscription-details.ejs", {foundSubscription})
     }
     catch(error){
 
