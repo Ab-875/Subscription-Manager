@@ -5,7 +5,7 @@ const User = require("../models/User")
 
 router.get("/", async (req, res) => {
     try {
-        const foundSubscription = await Subscription.find()
+        const foundSubscription = await Subscription.find({user: req.session.user._id})
         res.render("subscriptionS/all-subscriptions", {foundSubscription})
     }
     catch (error) {
