@@ -77,7 +77,7 @@ router.delete("/id", async (req,res) => {
         res.redirect("/subscriptions")
     }
     catch(error){
-
+        console.log(error)
     }
 })
 
