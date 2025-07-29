@@ -12,6 +12,9 @@
     <% foundSubscription.forEach((oneSubscription) => { %>
         <div>
             <h2><%= oneSubscription.subName %></h2>
+            <p>Bill: <%= oneSubscription.subCategory %></p>
+            <p>First Subscription: <%= oneSubscription.startDate %></p>
+            <p>Next Charge: <%= oneSubscription.endDate %></p>
         </div>
     <% }); %>
 </body>
