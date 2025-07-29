@@ -11,5 +11,16 @@ router.get("/", (req, res) => {
     }
 })
 
+router.get("/new", (req,res) => {
+    try{
+        res.render("subscriptions/new-subscription")
+    }
+    catch(error){
+        console.log(error)
+    }
+})
+
+
+
 
 module.exports = router
