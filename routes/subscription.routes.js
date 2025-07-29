@@ -32,5 +32,14 @@ router.post("/", async (req,res) => {
     }
 })
 
+router.get("/:id", (req,res) => {
+    try{
+        res.render("subscriptions/subscription-details.ejs")
+    }
+    catch(error){
+
+    }
+})
+
 
 module.exports = router
