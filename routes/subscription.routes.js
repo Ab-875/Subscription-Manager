@@ -1,5 +1,5 @@
 const router = require("express").Router()
-
+const Subscription = require("../models/Subscription")
 
 
 router.get("/", (req, res) => {
@@ -22,7 +22,7 @@ router.get("/new", (req,res) => {
 
 router.post("/", async (req,res) => {
     try{
-        const newSubscription = await mongoose.create(req.body, req.body.user = req.session.id)
+        const newSubscription = await Subscription.create(req.body)
         res.redirect("/subscriptions")
     }
     catch(error){

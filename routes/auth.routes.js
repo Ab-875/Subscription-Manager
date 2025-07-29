@@ -19,12 +19,12 @@ router.post("/sign-up", async (req, res) => {
             });
         }
 
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            return res.render("auth/sign-up", {
-                error: "Please enter a valid email address."
-            });
-        }
+        // const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        // if (!emailRegex.test(email)) {
+        //     return res.render("auth/sign-up", {
+        //         error: "Please enter a valid email address."
+        //     });
+        // }
 
         if (password.length < 6) {
             return res.render("auth/sign-up", {
