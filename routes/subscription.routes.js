@@ -41,6 +41,21 @@ router.get("/fitness", async (req,res) => {
     }
 })
 
+router.get("/ecommerce", async (req,res) => {
+    try{
+        const filter = await Subscription.find({
+            user:req.session.user._id,
+            subCategory: "E-Commerce"
+        }).sort({ endDate: 1})
+
+        res.render("subscriptions/all-subscriptions.ejs", {foundSubscription: filter})
+    }
+    catch(error){
+        console.log(error)
+    }
+})
+
+
 
 router.get("/new", async (req,res) => {
     try{
