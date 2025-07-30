@@ -13,7 +13,13 @@
         <input type="text" name="subName" id="name" value="<%= foundSubscription.subName %>">
 
         <label for="Category">Category: </label>
-        <input type="text" name="subCategory" id="Category" value="<%= foundSubscription.subCategory %>">
+        <select name="subCategory" id="Category">
+            <option value="Entertainment" <%= foundSubscription.subCategory === "Entertainment" ? "selected": "" %>>Entertainment</option>
+            <option value="Fitness & Health" <%= foundSubscription.subCategory === "Fitness & Health" ? "selected": "" %>>Fitness & Health</option>
+            <option value="E-Commerce" <%= foundSubscription.subCategory === "E-Commerce" ? "selected": "" %>>E-Commerce</option>
+            <option value="Applications" <%= foundSubscription.subCategory === "Applications" ? "selected": "" %>>Applications</option>
+        </select>
+
 
         <label for="price">Charge:</label>
         <input type="number" name="price" id="price" value="<%= foundSubscription.price %>">
