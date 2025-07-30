@@ -13,6 +13,20 @@ router.get("/", async (req, res) => {
     }
 })
 
+router.get("/entertainment", async (req,res) => {
+    try{
+        const filter = await Subscription.find({
+            user:req.session.user._id,
+            subCategory: "Entertainment"
+        }).sort({ endDate: 1})
+
+        res.render("subscriptions/all-subscriptions.ejs", {foundSubscription: filter})
+    }
+    catch(error){
+        console.log(error)
+    }
+})
+
 router.get("/new", async (req,res) => {
     try{
         res.render("subscriptions/new-subscription")
