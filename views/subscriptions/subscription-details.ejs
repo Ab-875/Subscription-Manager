@@ -12,8 +12,8 @@
     <h2><%= foundSubscription.subName %></h2>
     <p>Category: <%= foundSubscription.subCategory  %></p>
     <p>Charge: <%= foundSubscription.price %></p>
-    <p>Initial Subscription: <%= foundSubscription.startDate %></p>
-    <p>Rebill: <%= foundSubscription.endDate %></p>
+    <p>Initial Subscription: <%= foundSubscription.startDate.toLocaleDateString("en-GB") %></p>
+    <p>Rebill: <%= foundSubscription.endDate.toLocaleDateString("en-GB") %></p>
     <a href="/subscriptions/<%= foundSubscription._id %>/edit">edit</a>
     <form action="/subscriptions/<%= foundSubscription._id %>?_method=DELETE" method="post">
         <button type="submit">Delete</button>

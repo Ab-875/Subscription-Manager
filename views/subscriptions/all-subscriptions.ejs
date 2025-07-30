@@ -14,8 +14,8 @@
         <div>
             <h2><%= oneSubscription.subName %></h2>
             <p>Bill: <%= oneSubscription.price %></p>
-            <p>First Subscription: <%= oneSubscription.startDate %></p>
-            <p>Next Charge: <%= oneSubscription.endDate %></p>
+            <p>First Subscription: <%= oneSubscription.startDate.toLocaleDateString("en-GB") %></p>
+            <p>Next Charge: <%= oneSubscription.endDate.toLocaleDateString("en-GB") %></p>
             <a href="/subscriptions/<%= oneSubscription._id %>">more details</a>
         </div>
         <hr>
