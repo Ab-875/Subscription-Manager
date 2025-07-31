@@ -8,17 +8,21 @@
 <body>
     <%- include('../partials/navbar') %>
     <h1><%= foundSubscription.subCategory %></h1>
+    <% let TotalPrice = 0 %>
 
     <% foundSubscription.forEach((oneSubscription) => { %>
         <hr>
         <div>
             <h2><%= oneSubscription.subName %></h2>
-            <p>Bill: <%= oneSubscription.price %></p>
+            <p>Bill: <%= oneSubscription.price %> $</p>
             <p>First Subscription: <%= oneSubscription.startDate.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }) %></p>
             <p>Next Charge: <%= oneSubscription.endDate.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }) %></p>
             <a href="/subscriptions/<%= oneSubscription._id %>">more details</a>
         </div>
         <hr>
+        <% TotalPrice = TotalPrice + oneSubscription.price %>
     <% }); %>
+    <p><%= TotalPrice %> usd</p>
+    
 </body>
 </html>
