@@ -34,7 +34,7 @@ router.get("/fitness", async (req,res) => {
             subCategory: "Fitness & Health"
         }).sort({ endDate: 1})
 
-        res.render("subscriptions/categories.ej", {foundSubscription: filter})
+        res.render("subscriptions/categories.ejs", {foundSubscription: filter})
     }
     catch(error){
         console.log(error)
@@ -48,7 +48,7 @@ router.get("/ecommerce", async (req,res) => {
             subCategory: "E-Commerce"
         }).sort({ endDate: 1})
 
-        res.render("subscriptions/categories.ej", {foundSubscription: filter})
+        res.render("subscriptions/categories.ejs", {foundSubscription: filter})
     }
     catch(error){
         console.log(error)
@@ -62,7 +62,7 @@ router.get("/applications", async (req,res) => {
             subCategory: "Applications"
         }).sort({ endDate: 1})
 
-        res.render("subscriptions/categories.ej", {foundSubscription: filter})
+        res.render("subscriptions/categories.ejs", {foundSubscription: filter})
     }
     catch(error){
         console.log(error)
