@@ -27,7 +27,14 @@
         
         <label for="start-date">Start</label>
         <input type="date" name="startDate" id="start-date">
-        
+<!-- 
+        <script>
+            document.getElementById('startDate').onChange = function (){
+                let startDate = this.value
+                document.getElementById('endDate').setAttribute('min', startDate)
+            }
+        </script>
+         -->
         <label for="end-date">End</label>
         <input type="date" name="endDate" id="end-date">
 

@@ -8,6 +8,7 @@
 <body>
     <%- include('../partials/navbar') %>
     <h1>All Subscriptions</h1>
+    <% let TotalPrice = 0 %>
 
     <% foundSubscription.forEach((oneSubscription) => { %>
         <hr>
@@ -19,6 +20,8 @@
             <a href="/subscriptions/<%= oneSubscription._id %>">more details</a>
         </div>
         <hr>
+        <% TotalPrice = TotalPrice + oneSubscription.price %>
     <% }); %>
+    <p><%= TotalPrice %> usd</p>
 </body>
 </html>
