@@ -3,34 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <title>Document</title>
 </head>
 <body>
     <%- include('../partials/navbar') %>
-    <form action="/subscriptions/<%= foundSubscription._id %>?_method=PUT" method="post">
+    <h1>Edit Subscription</h1>
+        <form action="/subscriptions/<%= foundSubscription._id %>/edit" method="post" class="row g-3">
 
-        <label for="name">Subscription Name:</label>
-        <input type="text" name="subName" id="name" value="<%= foundSubscription.subName %>">
+            <div class="col-md-6">
+                <label for="name" class="form-label">Subscription Name</label>
+                <input type="text" name="subName" id="name" class="form-control" value="<%= foundSubscription.subName %>" required>
+            </div>
 
-        <label for="Category">Category: </label>
-        <select name="subCategory" id="Category">
-            <option value="Entertainment" <%= foundSubscription.subCategory === "Entertainment" ? "selected": "" %>>Entertainment</option>
-            <option value="Fitness & Health" <%= foundSubscription.subCategory === "Fitness & Health" ? "selected": "" %>>Fitness & Health</option>
-            <option value="E-Commerce" <%= foundSubscription.subCategory === "E-Commerce" ? "selected": "" %>>E-Commerce</option>
-            <option value="Applications" <%= foundSubscription.subCategory === "Applications" ? "selected": "" %>>Applications</option>
-        </select>
+            <div class="col-md-6">
+                <label for="Category" class="form-label">Category</label>
+                <select name="subCategory" id="Category" class="form-select" required>
+                    <option disabled selected>Select Category</option>
+                    <option value="Entertainment" <%= foundSubscription.subCategory === "Entertainment" ? "selected": ""%>>Entertainment</option>
+                    <option value="Fitness & Health" <%= foundSubscription.subCategory === "Fitness" ? "selected": ""%>>Fitness & Health</option>
+                    <option value="E-Commerce" <%= foundSubscription.subCategory === "E-Commerce" ? "selected": ""%>>E-Commerce</option>
+                    <option value="Applications" <%= foundSubscription.subCategory === "Applications" ? "selected": ""%>>Applications</option>
+                </select>
+            </div>
 
+            <div class="col-md-6">
+                <label for="price" class="form-label">Charge ($)</label>
+                <input type="number" name="price" id="price" class="form-control" value="<%= foundSubscription.price %>" required>
+            </div>
 
-        <label for="price">Charge:</label>
-        <input type="number" name="price" id="price" value="<%= foundSubscription.price %>">
-        
-        <label for="start-date">Start: </label>
-        <input type="date" name="startDate" id="start-date" value="<%= foundSubscription.startDate %>">
-        
-        <label for="end-date">End: </label>
-        <input type="date" name="endDate" id="end-date" value="<%= foundSubscription.endDate %>">
+            <div class="col-md-6">
+                <label for="start-date" class="form-label">Start</label>
+                <input type="date" name="startDate" id="start-date" class="form-control" value="<%= foundSubscription.startDate %>" required>
+            </div>
 
-        <button type="submit">Edit Subscription</button>
-    </form>
+            <div class="col-md-6">
+                <label for="end-date" class="form-label">Next Bill</label>
+                <input type="date" name="endDate" id="end-date" class="form-control" value="<%= foundSubscription.endDate %>" required>
+            </div>
+
+            <div class="col-12">
+                <button type="submit" class="btn btn-success">Edit Subscription</button>
+            </div>
+        </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
