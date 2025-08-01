@@ -1,17 +1,33 @@
-<nav>
-    <% if (user){ %>
-    <a href="/auth/logout">Logout</a>
-    <a href="/subscriptions">All Subscriptions</a>
-    <a href="/subscriptions/new">Add Subscription</a>
-    <a href="/subscriptions/entertainment">Entertainment</a>
-    <a href="/subscriptions/fitness">Fitness & Health</a>
-    <a href="/subscriptions/ecommerce">E-Commerce</a>
-    <a href="/subscriptions/applications">Applications</a>
-    <%= user.username %>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a href="/subscriptions" class="navbar-brand">Subscription Manager</a>
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
+        <div class="collapse navbar-collapse" id="navContet">
+            <ul class="navbar-nav me-auto">
+                <% if (user){ %>
+                    <li class="nav-item"><a class="nav-link" href="/subscriptions">All Subscriptions</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/subscriptions/new">Add Subscription</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/subscriptions/entertainment">Entertainment</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/subscriptions/fitness">Fitness & Health</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/subscriptions/ecommerce">E-Commerce</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/subscriptions/applications">Applications</a></li>
+                    <% } %>
+            </ul>
 
-    <%} else{ %>
-    <a href="/auth/login">Login</a>
-    <a href="/auth/sign-up">Sign Up</a>
-    <%} %>
+            <ul class="navbar-nav ms-auto">
+                <% if (user) {%>
+                    <li class="nav-item">
+                        <span class="navbar-text text-light me-2">Welcome, <%= user.username %></span>
+                    </li>
+                    <li class="nav-item"><a href="/auth/logout" class="nav-link">Logout</a></li>
+                    <% } else { %>
+                        <li class="nav-item"><a href="/auth/login" class="nav-link">Login</a></li>
+                        <li class="nav-item"><a href="/auth/sign-up" class="nav-link">Sign</a></li>
+                        <% } %>
+            </ul>
+        </div>
+    </div>
 </nav>
