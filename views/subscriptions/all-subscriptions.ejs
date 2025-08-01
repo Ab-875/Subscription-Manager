@@ -4,49 +4,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <title>All Subscriptions</title>
 </head>
 
-<body>
+<body class="bg-dark text-light">
     <%- include('../partials/navbar') %>
 
-        <div class="container mt4">
-
-            <h2 class="mb-4">All Subscriptions</h2>
-
+        <div class="container mt-4">
+            <h2 class="mb-4 text-light">
+                <%= foundSubscription.subCategory %>
+            </h2>
             <% let TotalPrice=0 %>
-
                 <% if (foundSubscription.length===0) { %>
                     <p class="text-muted">No Subscriptions</p>
                     <% } else { %>
-                        <div class="row row-cols-1 row-cols-md-3 g-40">
+                        <div class="row row-cols-1 row-cols-md-3 g-4">
                             <% foundSubscription.forEach((oneSubscription)=> { %>
-                                <% TotalPrice=TotalPrice + oneSubscription.price %>
+                                <% TotalPrice +=oneSubscription.price %>
                                     <div class="col">
-                                        <div class="card h-100 shadow-sm">
+                                        <div class="card bg-secondary text-light h-100 shadow-sm">
                                             <div class="card-body">
                                                 <h5 class="card-title">
                                                     <%= oneSubscription.subName %>
                                                 </h5>
                                                 <p class="card-text">
                                                     <strong>Category:</strong>
-                                                    <%= oneSubscription.subCategory %> <br>
-                                                        <strong>Price:</strong>
-                                                        $<%= oneSubscription.price %> USD <br>
+                                                    <%= oneSubscription.subCategory %><br>
+                                                        <strong>Price:</strong> $<%= oneSubscription.price %> USD<br>
                                                             <strong>Start:</strong>
-                                                            <%= oneSubscription.startDate.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }) %> <br>
+                                                            <%= oneSubscription.startDate.toLocaleDateString("en-GB") %>
+                                                                <br>
                                                                 <strong>Next Bill:</strong>
-                                                                <%= oneSubscription.endDate.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }) %> <br>
+                                                                <%= oneSubscription.endDate.toLocaleDateString("en-GB")
+                                                                    %><br>
                                                 </p>
                                                 <a href="/subscriptions/<%= oneSubscription._id %>"
                                                     class="btn btn-sm btn-primary">Details</a>
                                                 <a href="/subscriptions/<%= oneSubscription._id %>/edit"
-                                                    class="btn btn-sm btn-primary">Edit</a>
+                                                    class="btn btn-sm btn-warning">Edit</a>
                                             </div>
                                         </div>
                                     </div>
-                                    <% }); %>
+                                    <% }) %>
                         </div>
                         <div class="mt-4 text-end">
                             <h5>Total: $<%= TotalPrice %> USD</h5>
@@ -55,7 +55,6 @@
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
 
 </html>

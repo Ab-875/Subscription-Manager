@@ -1,52 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <title>Document</title>
+    <title>Categories</title>
 </head>
-<body>
+
+<body class="bg-dark text-light">
     <%- include('../partials/navbar') %>
-    <h1>Edit Subscription</h1>
-        <form action="/subscriptions/<%= foundSubscription._id %>/edit" method="post" class="row g-3">
 
-            <div class="col-md-6">
-                <label for="name" class="form-label">Subscription Name</label>
-                <input type="text" name="subName" id="name" class="form-control" value="<%= foundSubscription.subName %>" required>
-            </div>
+        <div class="container mt-4">
+            <h2 class="mb-4">
+                <%= foundSubscription.length> 0 ? foundSubscription[0].subCategory : "Category" %>
+            </h2>
 
-            <div class="col-md-6">
-                <label for="Category" class="form-label">Category</label>
-                <select name="subCategory" id="Category" class="form-select" required>
-                    <option disabled selected>Select Category</option>
-                    <option value="Entertainment" <%= foundSubscription.subCategory === "Entertainment" ? "selected": ""%>>Entertainment</option>
-                    <option value="Fitness & Health" <%= foundSubscription.subCategory === "Fitness" ? "selected": ""%>>Fitness & Health</option>
-                    <option value="E-Commerce" <%= foundSubscription.subCategory === "E-Commerce" ? "selected": ""%>>E-Commerce</option>
-                    <option value="Applications" <%= foundSubscription.subCategory === "Applications" ? "selected": ""%>>Applications</option>
-                </select>
-            </div>
+            <% let TotalPrice=0 %>
 
-            <div class="col-md-6">
-                <label for="price" class="form-label">Charge ($)</label>
-                <input type="number" name="price" id="price" class="form-control" value="<%= foundSubscription.price %>" required>
-            </div>
+                <% if (foundSubscription.length===0) { %>
+                    <p class="text-secondary">No Subscriptions</p>
+                    <% } else { %>
+                        <div class="row row-cols-1 row-cols-md-3 g-4">
+                            <% foundSubscription.forEach((oneSubscription)=> { %>
+                                <% TotalPrice +=oneSubscription.price %>
+                                    <div class="col">
+                                        <div class="card h-100 shadow-sm bg-secondary text-light border-light">
+                                            <div class="card-body">
+                                                <h5 class="card-title">
+                                                    <%= oneSubscription.subName %>
+                                                </h5>
+                                                <p class="card-text">
+                                                    <strong>Category:</strong>
+                                                    <%= oneSubscription.subCategory %><br>
+                                                        <strong>Price:</strong> $<%= oneSubscription.price %> USD<br>
+                                                            <strong>Start:</strong>
+                                                            <%= oneSubscription.startDate.toLocaleDateString("en-GB", {
+                                                                day: "numeric" , month: "short" , year: "numeric" }) %>
+                                                                <br>
+                                                                <strong>Next Bill:</strong>
+                                                                <%= oneSubscription.endDate.toLocaleDateString("en-GB",
+                                                                    { day: "numeric" , month: "short" , year: "numeric"
+                                                                    }) %>
+                                                </p>
+                                                <a href="/subscriptions/<%= oneSubscription._id %>"
+                                                    class="btn btn-sm btn-outline-light">Details</a>
+                                                <a href="/subscriptions/<%= oneSubscription._id %>/edit"
+                                                    class="btn btn-sm btn-light text-dark">Edit</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <% }); %>
+                        </div>
 
-            <div class="col-md-6">
-                <label for="start-date" class="form-label">Start</label>
-                <input type="date" name="startDate" id="start-date" class="form-control" value="<%= foundSubscription.startDate %>" required>
-            </div>
+                        <div class="mt-4 text-end">
+                            <h5>Total: $<%= TotalPrice %> USD</h5>
+                        </div>
+                        <% } %>
+        </div>
 
-            <div class="col-md-6">
-                <label for="end-date" class="form-label">Next Bill</label>
-                <input type="date" name="endDate" id="end-date" class="form-control" value="<%= foundSubscription.endDate %>" required>
-            </div>
-
-            <div class="col-12">
-                <button type="submit" class="btn btn-success">Edit Subscription</button>
-            </div>
-        </form>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

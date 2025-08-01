@@ -4,37 +4,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription Details</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <title>Document</title>
 </head>
 
-<body>
+<body class="bg-dark text-light">
     <%- include('../partials/navbar') %>
         <div class="container mt-5">
             <h1 class="mb-4">Subscription Details</h1>
-
-            <div class="card">
+            <div class="card bg-secondary text-light shadow-sm">
                 <div class="card-body">
                     <h3 class="card-title">
                         <%= foundSubscription.subName %>
                     </h3>
-                    <p class="card-text"><strong>Category:</strong>
+                    <p><strong>Category:</strong>
                         <%= foundSubscription.subCategory %>
                     </p>
-                    <p class="card-text"><strong>Charge:</strong> $<%= foundSubscription.price %> USD
-                    </p>
-                    <p class="card-text"><strong>Initial Subscription:</strong>
+                    <p><strong>Charge:</strong> $<%= foundSubscription.price %> USD</p>
+                    <p><strong>Initial Subscription:</strong>
                         <%= foundSubscription.startDate.toLocaleDateString("en-GB", { day: "numeric" , month: "short" ,
                             year: "numeric" }) %>
                     </p>
-                    <p class="card-text"><strong>Rebill:</strong>
+                    <p><strong>Rebill:</strong>
                         <%= foundSubscription.endDate.toLocaleDateString("en-GB", { day: "numeric" , month: "short" ,
                             year: "numeric" }) %>
                     </p>
 
                     <div class="d-flex gap-2 mt-4">
                         <a href="/subscriptions/<%= foundSubscription._id %>/edit" class="btn btn-warning">Edit</a>
-
                         <form action="/subscriptions/<%= foundSubscription._id %>?_method=DELETE" method="post">
                             <button type="submit" class="btn btn-danger"
                                 onclick="return confirm('Are you sure you want to delete this subscription?')">Delete</button>
@@ -44,7 +41,6 @@
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
 
 </html>
