@@ -25,17 +25,10 @@
         <label for="price">Charge:</label>
         <input type="number" name="price" id="price">
         
-        <label for="start-date">Start</label>
+        <label for="start-date">Start:</label>
         <input type="date" name="startDate" id="start-date">
-<!-- 
-        <script>
-            document.getElementById('startDate').onChange = function (){
-                let startDate = this.value
-                document.getElementById('endDate').setAttribute('min', startDate)
-            }
-        </script>
-         -->
-        <label for="end-date">End</label>
+
+        <label for="end-date">Next Bill: </label>
         <input type="date" name="endDate" id="end-date">
 
         <button type="submit">Add Subscription</button>
@@ -43,3 +36,12 @@
 
 </body>
 </html>
+
+<script>
+    const chosenStartDate = document.getElementById("start-date")
+    const chosenEndDate = document.getElementById("end-date")
+
+    chosenStartDate.addEventListener("change", () => {
+        chosenEndDate.min = chosenStartDate.value
+    })
+</script>
