@@ -1,3 +1,4 @@
+<div data-bs-theme="light">
 <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm border-bottom">
     <div class="container">
         <a href="/subscriptions" class="navbar-brand">Subscription Manager</a>
@@ -8,12 +9,12 @@
         <div class="collapse navbar-collapse" id="navContent">
             <ul class="navbar-nav me-auto">
                 <% if (user){ %>
-                    <li class="nav-item"><a class="nav-link" href="/subscriptions">All Subscriptions</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/subscriptions/new">Add Subscription</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/subscriptions/entertainment">Entertainment</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/subscriptions/fitness">Fitness & Health</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/subscriptions/ecommerce">E-Commerce</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/subscriptions/applications">Applications</a></li>
+                    <li class="nav-item"><a class="nav-link <%= activeCategory === 'all' ? 'active fw-bold text-primary' : '' %>" href="/subscriptions">All Subscriptions</a></li>
+                    <li class="nav-item"><a class="nav-link <%= activeCategory === 'new' ? 'active fw-bold text-primary' : '' %>" href="/subscriptions/new">Add Subscription</a></li>
+                    <li class="nav-item"><a class="nav-link <%= activeCategory === 'entertainment' ? 'active fw-bold text-primary' : '' %>" href="/subscriptions/entertainment">Entertainment</a></li>
+                    <li class="nav-item"><a class="nav-link <%= activeCategory === 'fitness' ? 'active fw-bold text-primary' : '' %>" href="/subscriptions/fitness">Fitness & Health</a></li>
+                    <li class="nav-item"><a class="nav-link <%= activeCategory === 'ecommerce' ? 'active fw-bold text-primary' : '' %>" href="/subscriptions/ecommerce">E-Commerce</a></li>
+                    <li class="nav-item"><a class="nav-link <%= activeCategory === 'applications' ? 'active fw-bold text-primary' : '' %>" href="/subscriptions/applications">Applications</a></li>
                     <% } %>
             </ul>
 
@@ -31,3 +32,4 @@
         </div>
     </div>
 </nav>
+</div>

@@ -6,7 +6,7 @@ const User = require("../models/User")
 router.get("/", async (req, res) => {
     try {
         const foundSubscription = await Subscription.find({user: req.session.user._id}).sort({ endDate: 1})
-        res.render("subscriptionS/all-subscriptions", {foundSubscription})
+        res.render("subscriptionS/all-subscriptions", {foundSubscription, activeCategory: "all"})
     }
     catch (error) {
         console.log(error)
@@ -20,7 +20,7 @@ router.get("/entertainment", async (req,res) => {
             subCategory: "Entertainment"
         }).sort({ endDate: 1})
 
-        res.render("subscriptions/categories.ejs", {foundSubscription: filter})
+        res.render("subscriptions/categories.ejs", {foundSubscription: filter, activeCategory: "entertainment"})
     }
     catch(error){
         console.log(error)
@@ -34,7 +34,7 @@ router.get("/fitness", async (req,res) => {
             subCategory: "Fitness & Health"
         }).sort({ endDate: 1})
 
-        res.render("subscriptions/categories.ejs", {foundSubscription: filter})
+        res.render("subscriptions/categories.ejs", {foundSubscription: filter, activeCategory: "fitness"})
     }
     catch(error){
         console.log(error)
@@ -48,7 +48,7 @@ router.get("/ecommerce", async (req,res) => {
             subCategory: "E-Commerce"
         }).sort({ endDate: 1})
 
-        res.render("subscriptions/categories.ejs", {foundSubscription: filter})
+        res.render("subscriptions/categories.ejs", {foundSubscription: filter, activeCategory: "ecommerce"})
     }
     catch(error){
         console.log(error)
@@ -62,7 +62,7 @@ router.get("/applications", async (req,res) => {
             subCategory: "Applications"
         }).sort({ endDate: 1})
 
-        res.render("subscriptions/categories.ejs", {foundSubscription: filter})
+        res.render("subscriptions/categories.ejs", {foundSubscription: filter, activeCategory: "applications"})
     }
     catch(error){
         console.log(error)
@@ -74,7 +74,7 @@ router.get("/applications", async (req,res) => {
 
 router.get("/new", async (req,res) => {
     try{
-        res.render("subscriptions/new-subscription")
+        res.render("subscriptions/new-subscription", {activeCategory: "new"})
     }
     catch(error){
         console.log(error)
@@ -103,7 +103,7 @@ router.post("/", async (req,res) => {
 router.get("/:id", async (req,res) => {
     try{
         const foundSubscription = await Subscription.findById(req.params.id)
-        res.render("subscriptions/subscription-details.ejs", {foundSubscription})
+        res.render("subscriptions/subscription-details.ejs", {foundSubscription, activeCategory: "all"})
     }
     catch(error){
         console.log(error)
@@ -113,7 +113,7 @@ router.get("/:id", async (req,res) => {
 router.get("/:id/edit", async (req,res) => {
     try{
         const foundSubscription = await Subscription.findById(req.params.id)
-        res.render("subscriptions/edit-subscription.ejs", {foundSubscription})
+        res.render("subscriptions/edit-subscription.ejs", {foundSubscription, activeCategory: "new"})
     }
     catch(error){
         console.log(error)

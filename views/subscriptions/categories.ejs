@@ -13,7 +13,7 @@
 
         <div class="container mt-4">
             <h2 class="mb-4">
-                <%= foundSubscription.length> 0 ? foundSubscription[0].subCategory : "Category" %>
+                <%= foundSubscription.subCategory%>
             </h2>
 
             <% let TotalPrice=0 %>
@@ -22,10 +22,10 @@
                     <p class="text-secondary">No Subscriptions</p>
                     <% } else { %>
                         <div class="row row-cols-1 row-cols-md-3 g-4">
-                            <% foundSubscription.forEach((oneSubscription)=> { %>
-                                <% TotalPrice +=oneSubscription.price %>
+                            <% foundSubscription.forEach((oneSubscription) => { %>
+                                <% TotalPrice = TotalPrice + oneSubscription.price %>
                                     <div class="col">
-                                        <div class="card h-100 shadow-sm border border-light bg-secondary text-light">
+                                        <div class="card bg-secondary text-light h-100 shadow-sm">
                                             <div class="card-body">
                                                 <h5 class="card-title">
                                                     <%= oneSubscription.subName %>
@@ -46,7 +46,7 @@
                                                 <a href="/subscriptions/<%= oneSubscription._id %>"
                                                     class="btn btn-sm btn-outline-light">Details</a>
                                                 <a href="/subscriptions/<%= oneSubscription._id %>/edit"
-                                                    class="btn btn-sm btn-outline-light">Edit</a>
+                                                    class="btn btn-sm btn-warning">Edit</a>
                                             </div>
                                         </div>
                                     </div>
@@ -54,7 +54,7 @@
                         </div>
 
                         <div class="mt-4 text-end">
-                            <h5>Total: $<%= TotalPrice %> USD</h5>
+                            <h5>Total: $<%= TotalPrice %> USD/month</h5>
                         </div>
                         <% } %>
         </div>
