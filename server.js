@@ -1,7 +1,7 @@
 // imports
-const express = require("express") //importing express package
-const app = express() // creates a express application
-const dotenv = require("dotenv").config() //this allows me to use my .env values in this file
+const express = require("express") 
+const app = express() 
+const dotenv = require("dotenv").config() 
 const morgan = require("morgan")
 const methodOverride = require("method-override")
 const conntectToDB = require('./config/db')
@@ -19,22 +19,22 @@ const isSignedIn = require("./middleware/isSignedIn")
 
 
 // Middleware
-app.use(express.static('public')); //all static files are in the public folder
-app.use(express.urlencoded({ extended: false })); // this will allow us to see the data being sent in the POST or PUT
-app.use(methodOverride("_method")); // Changes the method based on the ?_method
-app.use(morgan("dev")) // logs the requests as they are sent to our sever in the terminal
+app.use(express.static('public')); 
+app.use(express.urlencoded({ extended: false })); 
+app.use(methodOverride("_method")); 
+app.use(morgan("dev")) 
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
   })
-); // uses the secret session code in the .env to encrypt the token
-app.use(passUserToView) //used to set the res.locals.user for each ejs page
-app.set("view engine", "ejs") //is more specific on which view engine we are using
+); 
+app.use(passUserToView) 
+app.set("view engine", "ejs") 
 
 
-// connect to database
+
 conntectToDB()
 
 
