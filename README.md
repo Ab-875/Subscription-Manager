@@ -1,4 +1,4 @@
-# Project 1: 'Wordle' 
+# Project 2: 'Subscription Manager' 
 
 ![Image of the site interface](/public/images/sub-manager-interface.PNG)
 
@@ -8,7 +8,6 @@ In this Project I looked to tackle a problem that I frequently had, developed an
 
 ### Technologies Used
 
-- HTML5
 - CSS3
 - JavaScript
 - MongoDB
